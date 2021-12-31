@@ -1,0 +1,10 @@
+{
+  "TodoListPage": {
+    "title": "Todo List",
+    "emptyTodoListMessage": "You don't have any todos, press the button below to create a new todo",
+    "NewTodoButtonText": "New Todo"
+  },
+  "TodoPage": {
+    "title": "Todo Details"
+  }
+}
