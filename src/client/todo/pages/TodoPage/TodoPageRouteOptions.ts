@@ -1,13 +1,12 @@
-import {useTranslation} from 'react-i18next';
+import i18n from '../../../common/i18n/i18n';
 import {NativeStackNavigationOptionsFunction} from '../../../common/navigation/types/NativeStackNavigationOptionsFunction';
 import {TodoPageProps} from './TodoPage';
 
 const TodoPageRouteOptions: NativeStackNavigationOptionsFunction<
   TodoPageProps
 > = () => {
-  const {t} = useTranslation();
   return {
-    title: t('TodoPage.title'),
+    title: i18n.t('TodoPage.title'),
   };
 };
 

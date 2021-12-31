@@ -4,6 +4,9 @@
     "emptyTodoListMessage": "ليس لديك اي مهام، لانشاء مهم جديدة اضغط الزر ادناه",
     "NewTodoButtonText": "مهمة جديدة"
   },
+  "TodoListItem": {
+    "dueDate": "{{ date, PPp }}"
+  },
   "TodoPage": {
     "title": "تفاصيل المهمة"
   }

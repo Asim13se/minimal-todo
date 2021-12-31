@@ -14,7 +14,7 @@ export type TodoListPageProps = {} & NativeStackScreenProps<
 function TodoListPage(props: TodoListPageProps) {
   return (
     <View style={styles.root}>
-      <TodoListContainer />
+      <TodoListContainer navigation={props.navigation} />
       <NewTodoInputContainer />
       <NewTodoFloatingButton />
     </View>
