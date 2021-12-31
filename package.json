@@ -12,6 +12,8 @@
     "compile:watch": "tsc --watch"
   },
   "dependencies": {
+    "@react-native-community/blur": "^3.6.0",
+    "@react-native-community/datetimepicker": "^5.1.0",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "date-fns": "^2.28.0",
@@ -20,9 +22,13 @@
     "react-hooks-global-state": "^1.0.2",
     "react-i18next": "^11.15.2",
     "react-native": "0.66.4",
+    "react-native-gesture-handler": "1.10.3",
+    "react-native-modal-datetime-picker": "^13.0.1",
+    "react-native-reanimated": "1.13.0",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
-    "react-native-vector-icons": "^9.0.0"
+    "react-native-vector-icons": "^9.0.0",
+    "reanimated-bottom-sheet": "^1.0.0-alpha.22"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

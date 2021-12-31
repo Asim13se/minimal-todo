@@ -6,7 +6,7 @@ import TodoListItemCheckbox from './TodoListItemCheckbox';
 import {OnPressTodoItemCheckbox} from '../types/OnPressTodoItemCheckbox';
 import TodoListItemTitle from './TodoListItemTitle';
 import Spacer from '../../../../common/components/layout/Spacer';
-import TodoDueDate from '../../../components/TodoDueDate';
+import TodoListItemDueDate from './TodoListItemDueDate';
 
 type Props = {
   item: Todo;
@@ -32,7 +32,7 @@ function TodoListItem(props: Props) {
         <View>
           <TodoListItemTitle todo={props.item} />
           <Spacer height={8} />
-          <TodoDueDate todo={props.item} />
+          <TodoListItemDueDate todo={props.item} />
         </View>
       </View>
     </TouchableOpacity>

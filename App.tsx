@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import './src/client/common/i18n/i18n';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';

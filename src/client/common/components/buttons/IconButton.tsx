@@ -30,6 +30,8 @@ const styles = StyleSheet.create({
   touchable: {
     justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 5,
+    paddingHorizontal: 5,
   },
 });
 

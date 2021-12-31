@@ -1,39 +1,47 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {useTranslation} from 'react-i18next';
-import {isAfter} from 'date-fns';
 import Colors from '../../common/styling/Colors';
 import PrimaryTextStyle from '../../common/styling/PrimaryTextStyle';
-import {Todo} from '../../../shared/todo/models/Todo';
+import IconButton from '../../common/components/buttons/IconButton';
 
 type Props = {
-  todo: Todo;
+  dueDate: Date | null;
+  isPastDueDate?: boolean;
   onPress?: () => void;
+  onPressClear?: () => void;
 };
 
 function TodoDueDate(props: Props) {
   const {t} = useTranslation();
-  if (!props.todo.dueDate) {
+  if (!props.dueDate) {
     return null;
   }
-  const dueDate = new Date(props.todo.dueDate);
-  const isPastDueDate = isAfter(new Date(), dueDate) && !props.todo.doneAt;
+  const dueDate = new Date(props.dueDate);
   return (
     <TouchableOpacity
       activeOpacity={0.6}
       style={[
         styles.touchable,
-        isPastDueDate ? styles.pastDueDateTouchable : null,
+        props.isPastDueDate ? styles.pastDueDateTouchable : null,
       ]}
       onPress={props.onPress}
       disabled={!props.onPress}>
       <Text
         style={[
           styles.dueDateText,
-          isPastDueDate ? styles.pastDueDateText : null,
+          props.isPastDueDate ? styles.pastDueDateText : null,
         ]}>
         {t('TodoListItem.dueDate', {date: dueDate})}
       </Text>
+      {props.onPressClear ? (
+        <IconButton
+          style={styles.clearButton}
+          iconName={'close'}
+          onPress={props.onPressClear}
+          size={20}
+        />
+      ) : null}
     </TouchableOpacity>
   );
 }
@@ -46,6 +54,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderRadius: 18,
     alignSelf: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   pastDueDateTouchable: {
     borderColor: Colors.pastDueDateColor,
@@ -58,6 +68,10 @@ const styles = StyleSheet.create({
   },
   pastDueDateText: {
     color: Colors.pastDueDateColor,
+  },
+  clearButton: {
+    marginStart: 5,
+    marginEnd: -10,
   },
 });
 

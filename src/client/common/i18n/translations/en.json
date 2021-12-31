@@ -7,6 +7,10 @@
   "TodoListItem": {
     "dueDate": "{{ date, PPp }}"
   },
+  "NewTodoInput": {
+    "textInputPlaceholder": "New todo",
+    "saveButton": "Save"
+  },
   "TodoPage": {
     "title": "Todo Details"
   }
