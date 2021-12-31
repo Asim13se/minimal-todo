@@ -72,7 +72,7 @@ export default function BottomSheet(props: Props) {
           <TouchableOpacity
             onPress={() => props.onClose()}
             style={styles.dismissArea}>
-            <BlurView style={styles.blurView} blurType="light" />
+            <BlurView style={styles.blurView} blurType="dark" />
           </TouchableOpacity>
         </>
       ) : null}

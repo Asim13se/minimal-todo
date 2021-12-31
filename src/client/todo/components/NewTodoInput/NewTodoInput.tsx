@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
+import Portal from '@burstware/react-native-portal';
 import BottomSheet from '../../../common/components/containers/BottomSheet';
 import NewTodoTitleTextInput from './NewTodoTitleTextInput';
 import {OnTitleChange} from '../../types/OnTitleChange';
@@ -29,7 +30,7 @@ function NewTodoInput(props: Props) {
           onTitleChange={props.onTitleChange}
           isFocused={props.isVisible}
         />
-        <Spacer height={10} />
+        <Spacer height={20} />
         {props.dueDate ? (
           <>
             <TodoDueDate
@@ -52,12 +53,14 @@ function NewTodoInput(props: Props) {
   };
 
   return (
-    <BottomSheet
-      onClose={props.onClose}
-      isVisible={props.isVisible}
-      renderContent={renderContent}
-      height={props.dueDate ? 500 : 450}
-    />
+    <Portal>
+      <BottomSheet
+        onClose={props.onClose}
+        isVisible={props.isVisible}
+        renderContent={renderContent}
+        height={props.dueDate ? 510 : 460}
+      />
+    </Portal>
   );
 }
 
