@@ -2,7 +2,8 @@
   "TodoListPage": {
     "title": "قائمة المهام",
     "emptyTodoListMessage": "ليس لديك اي مهام، لانشاء مهم جديدة اضغط الزر ادناه",
-    "NewTodoButtonText": "مهمة جديدة"
+    "NewTodoButtonText": "مهمة جديدة",
+    "fetchErrorMessage": "حدث خطأ ما،الرجاء المحاولة لاحقا"
   },
   "TodoListItem": {
     "dueDate": "{{ date, PPp }}"

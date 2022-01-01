@@ -12,6 +12,7 @@ const Colors = {
   button: primary,
   checkbox: primary,
   borderColor: '#b5b5b5',
+  error: '#db2323',
 };
 
 export default Colors;

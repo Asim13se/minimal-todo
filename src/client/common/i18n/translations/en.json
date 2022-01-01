@@ -2,7 +2,8 @@
   "TodoListPage": {
     "title": "Todo List",
     "emptyTodoListMessage": "You don't have any todos, press the button below to create a new todo",
-    "NewTodoButtonText": "New Todo"
+    "NewTodoButtonText": "New Todo",
+    "fetchErrorMessage": "Something went wrong, please try again"
   },
   "TodoListItem": {
     "dueDate": "{{ date, PPp }}"

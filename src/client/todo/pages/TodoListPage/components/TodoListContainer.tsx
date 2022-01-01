@@ -1,37 +1,82 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {useQuery} from '@apollo/client';
 import TodoList from './TodoList';
-import {Todo} from '../../../../../shared/todo/models/Todo';
 import {OnPressTodoItem} from '../types/OnPressTodoItem';
 import {TodoListPageProps} from '../TodoListPage';
 import {TodoPageRouteName} from '../../TodoPage/TodoPage';
 import {OnPressTodoItemCheckbox} from '../types/OnPressTodoItemCheckbox';
+import TodoListQuery from '../../../queries/TodoListQuery';
+import {ActivityIndicator, StyleSheet} from 'react-native';
+import Colors from '../../../../common/styling/Colors';
+import useTodoList from '../../../hooks/useTodoList';
+import ErrorMessage from '../../../../common/components/messages/ErrorMessage';
+import {useTranslation} from 'react-i18next';
+import graphQLClient from '../../../../common/graphQL/graphQLClient';
+import toggleTodoCompletionMutation from '../../../mutations/toggleTodoCompletionMutation';
 
 type Props = {
   navigation: TodoListPageProps['navigation'];
 };
 
-//const todoList: Todo[] = [];
-const todoList: Todo[] = [
-  {
-    id: 'todo_1',
-    title: 'Todo 1',
-    doneAt: '2021-12-29T20:40:00.000Z',
-    dueDate: '2021-12-26T16:30:00.000Z',
-  },
-  {
-    id: 'todo_2',
-    title: 'Todo 2',
-    dueDate: '2021-12-31T22:40:00.000Z',
-  },
-];
-
 function TodoListContainer(props: Props) {
+  const {t} = useTranslation();
+  const {
+    data,
+    error: fetchError,
+    loading: isFetching,
+  } = useQuery(TodoListQuery);
+  const {todoList, setTodoList} = useTodoList();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+  useEffect(() => {
+    if (isFetching || fetchError) return;
+    setTodoList(data.todoList);
+    setIsLoading(false);
+    setError(null);
+  }, [setTodoList, data, isFetching, fetchError]);
+  useEffect(() => {
+    if (!fetchError) return;
+    setIsLoading(false);
+    setError(fetchError);
+  }, [fetchError]);
   const handlePressItem: OnPressTodoItem = todo => {
     props.navigation.navigate(TodoPageRouteName, {
       id: todo.id,
     });
   };
-  const handlePressItemCheckbox: OnPressTodoItemCheckbox = todo => {};
+  const handlePressItemCheckbox: OnPressTodoItemCheckbox = async todo => {
+    const newDoneAtValue = todo.doneAt ? '' : new Date().toISOString();
+    await graphQLClient.mutate({
+      mutation: toggleTodoCompletionMutation(todo.id, newDoneAtValue),
+    });
+    const newTodoList = todoList.map(item => {
+      if (item.id === todo.id) {
+        return {
+          ...item,
+          doneAt: newDoneAtValue,
+        };
+      }
+      return item;
+    });
+    setTodoList(newTodoList);
+  };
+  if (isLoading) {
+    return (
+      <ActivityIndicator
+        size={'large'}
+        style={styles.spinner}
+        color={Colors.primary}
+      />
+    );
+  }
+  if (error) {
+    return (
+      <ErrorMessage
+        style={styles.errorMessage}
+        message={t('TodoListPage.fetchErrorMessage')}
+      />
+    );
+  }
   return (
     <TodoList
       todoList={todoList}
@@ -40,5 +85,16 @@ function TodoListContainer(props: Props) {
     />
   );
 }
+
+const styles = StyleSheet.create({
+  spinner: {
+    marginTop: 100,
+    alignSelf: 'center',
+  },
+  errorMessage: {
+    marginTop: 70,
+    alignSelf: 'center',
+  },
+});
 
 export default TodoListContainer;
