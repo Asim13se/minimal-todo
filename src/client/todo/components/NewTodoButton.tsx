@@ -5,13 +5,16 @@ import useIsNewTodoInputVisible from '../hooks/useIsNewTodoInputVisible';
 
 function NewTodoButton() {
   const {t} = useTranslation();
-  const {setIsNewTodoInputVisible, isNewTodoInputVisible} =
-    useIsNewTodoInputVisible();
+  const {setIsNewTodoInputVisible} = useIsNewTodoInputVisible();
   const handlePress = () => {
-    setIsNewTodoInputVisible(!isNewTodoInputVisible);
+    setIsNewTodoInputVisible(true);
   };
   return (
-    <Button onPress={handlePress} text={t('TodoListPage.NewTodoButtonText')} />
+    <Button
+      testID={'NewTodoButton_testID'}
+      onPress={handlePress}
+      text={t('TodoListPage.NewTodoButtonText')}
+    />
   );
 }
 

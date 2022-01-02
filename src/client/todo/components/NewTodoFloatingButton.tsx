@@ -7,7 +7,13 @@ function NewTodoFloatingButton() {
   const handlePress = () => {
     setIsNewTodoInputVisible(true);
   };
-  return <FloatingButton onPress={handlePress} iconName={'plus'} />;
+  return (
+    <FloatingButton
+      testID={'NewTodoFloatingButton_testID'}
+      onPress={handlePress}
+      iconName={'plus'}
+    />
+  );
 }
 
 export default NewTodoFloatingButton;

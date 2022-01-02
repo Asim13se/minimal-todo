@@ -7,6 +7,7 @@ import ShadowStyle from '../../styling/ShadowStyle';
 type Props = {
   iconName: string;
   onPress: () => void;
+  testID?: string;
 };
 
 function FloatingButton(props: Props) {
@@ -17,6 +18,7 @@ function FloatingButton(props: Props) {
       style={styles.button}
       iconColor={Colors.primary}
       size={24}
+      testID={props.testID}
     />
   );
 }

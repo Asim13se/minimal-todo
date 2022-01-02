@@ -9,11 +9,13 @@ type Props = {
   iconColor?: string;
   onPress: () => void;
   style?: ViewStyle;
+  testID?: string;
 };
 
 function IconButton(props: Props) {
   return (
     <TouchableOpacity
+      testID={props.testID}
       style={[styles.touchable, props.style]}
       onPress={props.onPress}
       activeOpacity={0.6}>

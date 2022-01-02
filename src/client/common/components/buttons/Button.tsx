@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Text, ViewStyle} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, ViewStyle} from 'react-native';
 import PrimaryTextStyle from '../../styling/PrimaryTextStyle';
 import Colors from '../../styling/Colors';
 
@@ -7,11 +7,13 @@ type Props = {
   onPress: () => void;
   text: string;
   style?: ViewStyle;
+  testID?: string;
 };
 
 function Button(props: Props) {
   return (
     <TouchableOpacity
+      testID={props.testID}
       activeOpacity={0.6}
       style={[styles.touchable, props.style]}
       onPress={props.onPress}>

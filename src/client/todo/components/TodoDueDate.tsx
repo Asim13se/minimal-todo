@@ -20,33 +20,36 @@ function TodoDueDate(props: Props) {
   const dueDate = new Date(props.dueDate);
   return (
     <TouchableOpacity
+      testID={'TodoDueDate_testID'}
       activeOpacity={0.6}
       style={[
-        styles.touchable,
-        props.isPastDueDate ? styles.pastDueDateTouchable : null,
+        TodoDueDateStyles.touchable,
+        props.isPastDueDate ? TodoDueDateStyles.pastDueDateTouchable : null,
       ]}
       onPress={props.onPress}
       disabled={!props.onPress}>
       <Text
+        testID={'TodoDueDate_text_testID'}
         style={[
-          styles.dueDateText,
-          props.isPastDueDate ? styles.pastDueDateText : null,
+          TodoDueDateStyles.dueDateText,
+          props.isPastDueDate ? TodoDueDateStyles.pastDueDateText : null,
         ]}>
         {t('TodoListItem.dueDate', {date: dueDate})}
       </Text>
       {props.onPressClear ? (
         <IconButton
-          style={styles.clearButton}
+          style={TodoDueDateStyles.clearButton}
           iconName={'close'}
           onPress={props.onPressClear}
           size={20}
+          testID={'TodoDueDate_clear_button_testID'}
         />
       ) : null}
     </TouchableOpacity>
   );
 }
 
-const styles = StyleSheet.create({
+export const TodoDueDateStyles = StyleSheet.create({
   touchable: {
     borderWidth: 0.8,
     borderColor: Colors.borderColor,
