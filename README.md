@@ -1,5 +1,5 @@
 # Minimal Todo
-Minimal Todo is a simple Todo app with the minimal set of features
+Minimal Todo is a simple todo app with the minimal set of features
 - Written in Typescript
 - [apollo client](https://www.apollographql.com/docs/react/) is used as GraphQL client
 - [apollo-server](https://www.apollographql.com/docs/apollo-server/) is used as GraphQL server
