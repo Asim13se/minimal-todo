@@ -20,14 +20,15 @@ Empty todo list            |Create todo            |View todo list            |U
 ![screenshot 1](./assets/screenshots/screenshot_1.png)  |  ![screenshot 2](./assets/screenshots/screenshot_2.png)  |  ![screenshot 3](./assets/screenshots/screenshot_3.png)  |  ![screenshot 4](./assets/screenshots/screenshot_4.png)
 
 ### How to run the app locally
-- to run the local backend server, run `npm run start:backend-local`
-- to run the app on iOS, run `npx pod-install` then run `npm run ios`
-- to run the app on Android, run `npm run android`
+1. start the local backend server `npm run start:backend-local`
+2. run the app on the simulator/emulator
+   - to run the app on iOS, run `npx pod-install` then run `npm run ios`
+   - to run the app on Android, run `npm run android`
 
 ### Unit tests
 these components/custom hooks that have unit testing coverage
 
-####Components
+#### Components
 - [TodoDueDate.tsx](./src/client/todo/components/TodoDueDate.tsx)
 : [TodoDueDate.test.tsx](./src/client/todo/components/__tests__/TodoDueDate.test.tsx)
 - [NewTodoButton.tsx](./src/client/todo/components/NewTodoButton.tsx)
@@ -35,7 +36,7 @@ these components/custom hooks that have unit testing coverage
 - [NewTodoFloatingButton.tsx](./src/client/todo/components/NewTodoFloatingButton.tsx)
   : [NewTodoFloatingButton.test.tsx](./src/client/todo/components/__tests__/NewTodoFloatingButton.test.tsx)
 
-####Custom hooks
+#### Custom hooks
 - [useIsNewTodoInputVisible.ts](./src/client/todo/hooks/useIsNewTodoInputVisible.ts)
   : [useIsNewTodoInputVisible.test.ts](./src/client/todo/hooks/__tests__/useIsNewTodoInputVisible.test.ts)
 - [useTodoList.ts](./src/client/todo/hooks/useTodoList.ts)
