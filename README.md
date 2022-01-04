@@ -26,9 +26,9 @@ Empty todo list            |Create todo            |View todo list            |U
    - to run the app on Android, run `npm run android`
 
 ### Unit tests
-these components/custom hooks that have unit testing coverage
+these components/custom hooks that have unit test coverage
 
-#### Components
+##### Components
 - [TodoDueDate.tsx](./src/client/todo/components/TodoDueDate.tsx)
 : [TodoDueDate.test.tsx](./src/client/todo/components/__tests__/TodoDueDate.test.tsx)
 - [NewTodoButton.tsx](./src/client/todo/components/NewTodoButton.tsx)
@@ -36,7 +36,7 @@ these components/custom hooks that have unit testing coverage
 - [NewTodoFloatingButton.tsx](./src/client/todo/components/NewTodoFloatingButton.tsx)
   : [NewTodoFloatingButton.test.tsx](./src/client/todo/components/__tests__/NewTodoFloatingButton.test.tsx)
 
-#### Custom hooks
+##### Custom hooks
 - [useIsNewTodoInputVisible.ts](./src/client/todo/hooks/useIsNewTodoInputVisible.ts)
   : [useIsNewTodoInputVisible.test.ts](./src/client/todo/hooks/__tests__/useIsNewTodoInputVisible.test.ts)
 - [useTodoList.ts](./src/client/todo/hooks/useTodoList.ts)
