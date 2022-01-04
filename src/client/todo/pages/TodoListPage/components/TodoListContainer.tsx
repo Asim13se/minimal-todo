@@ -3,7 +3,6 @@ import {useQuery} from '@apollo/client';
 import TodoList from './TodoList';
 import {OnPressTodoItem} from '../types/OnPressTodoItem';
 import {TodoListPageProps} from '../TodoListPage';
-import {TodoPageRouteName} from '../../TodoPage/TodoPage';
 import {OnPressTodoItemCheckbox} from '../types/OnPressTodoItemCheckbox';
 import TodoListQuery from '../../../queries/TodoListQuery';
 import {ActivityIndicator, StyleSheet} from 'react-native';
@@ -13,6 +12,7 @@ import ErrorMessage from '../../../../common/components/messages/ErrorMessage';
 import {useTranslation} from 'react-i18next';
 import graphQLClient from '../../../../common/graphQL/graphQLClient';
 import toggleTodoCompletionMutation from '../../../mutations/toggleTodoCompletionMutation';
+import useSelectedTodo from '../../../hooks/useSelectedTodo';
 
 type Props = {
   navigation: TodoListPageProps['navigation'];
@@ -26,6 +26,7 @@ function TodoListContainer(props: Props) {
     loading: isFetching,
   } = useQuery(TodoListQuery);
   const {todoList, setTodoList} = useTodoList();
+  const {setSelectedTodo} = useSelectedTodo();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   useEffect(() => {
@@ -40,9 +41,7 @@ function TodoListContainer(props: Props) {
     setError(fetchError);
   }, [fetchError]);
   const handlePressItem: OnPressTodoItem = todo => {
-    props.navigation.navigate(TodoPageRouteName, {
-      id: todo.id,
-    });
+    setSelectedTodo(todo);
   };
   const handlePressItemCheckbox: OnPressTodoItemCheckbox = async todo => {
     const newDoneAtValue = todo.doneAt ? '' : new Date().toISOString();
@@ -65,7 +64,7 @@ function TodoListContainer(props: Props) {
       <ActivityIndicator
         size={'large'}
         style={styles.spinner}
-        color={Colors.primary}
+        color={Colors.spinner}
       />
     );
   }

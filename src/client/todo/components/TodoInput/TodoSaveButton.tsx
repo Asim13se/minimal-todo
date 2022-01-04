@@ -8,15 +8,15 @@ type Props = {
   onPress: () => void;
 };
 
-function NewTodoSaveButton(props: Props) {
+function TodoSaveButton(props: Props) {
   const {t} = useTranslation();
   return (
     <TextButton
       style={props.style}
       onPress={props.onPress}
-      text={t('NewTodoInput.saveButton')}
+      text={t('TodoInput.saveButton')}
     />
   );
 }
 
-export default NewTodoSaveButton;
+export default TodoSaveButton;

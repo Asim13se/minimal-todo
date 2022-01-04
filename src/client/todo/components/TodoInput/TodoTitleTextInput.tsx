@@ -10,7 +10,7 @@ type Props = {
   isFocused: boolean;
 };
 
-function NewTodoTitleTextInput(props: Props) {
+function TodoTitleTextInput(props: Props) {
   const {t} = useTranslation();
   const textInputRef = useRef<TextInput>(null);
   useEffect(() => {
@@ -25,7 +25,7 @@ function NewTodoTitleTextInput(props: Props) {
   }, [props.isFocused]);
   return (
     <TextInput
-      placeholder={t('NewTodoInput.textInputPlaceholder')}
+      placeholder={t('TodoInput.textInputPlaceholder')}
       value={props.title}
       style={styles.textInput}
       onChangeText={props.onTitleChange}
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NewTodoTitleTextInput;
+export default TodoTitleTextInput;

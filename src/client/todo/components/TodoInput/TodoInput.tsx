@@ -1,17 +1,21 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import Portal from '@burstware/react-native-portal';
 import BottomSheet from '../../../common/components/containers/BottomSheet';
-import NewTodoTitleTextInput from './NewTodoTitleTextInput';
+import TodoTitleTextInput from './TodoTitleTextInput';
 import {OnTitleChange} from '../../types/OnTitleChange';
-import NewTodoSaveButton from './NewTodoSaveButton';
+import TodoSaveButton from './TodoSaveButton';
 import TodoDueDateIconButton from '../TodoDueDateIconButton';
 import Spacer from '../../../common/components/layout/Spacer';
 import {OnDueDateChange} from '../../types/OnDueDateChange';
 import TodoDueDate from '../TodoDueDate';
+import {OnPressDeleteTodo} from '../../types/OnPressDeleteTodo';
+import TodoInputDeleteButton from './TodoInputDeleteButton';
+import Colors from '../../../common/styling/Colors';
 
 type Props = {
   isVisible: boolean;
+  isLoading?: boolean;
   onClose: () => void;
   title: string;
   onTitleChange: OnTitleChange;
@@ -19,13 +23,14 @@ type Props = {
   dueDate: Date | null;
   onDueDateChange: OnDueDateChange;
   onClearDueDate: () => void;
+  onPressDelete?: OnPressDeleteTodo;
 };
 
-function NewTodoInput(props: Props) {
+function TodoInput(props: Props) {
   const renderContent = () => {
     return (
       <View style={styles.content}>
-        <NewTodoTitleTextInput
+        <TodoTitleTextInput
           title={props.title}
           onTitleChange={props.onTitleChange}
           isFocused={props.isVisible}
@@ -40,14 +45,20 @@ function NewTodoInput(props: Props) {
             <Spacer height={10} />
           </>
         ) : null}
-        <TodoDueDateIconButton
-          onDueDateChange={props.onDueDateChange}
-          dueDate={props.dueDate}
-        />
-        <NewTodoSaveButton
-          style={styles.saveButton}
-          onPress={props.onPressSave}
-        />
+        <View style={styles.row}>
+          <TodoDueDateIconButton
+            onDueDateChange={props.onDueDateChange}
+            dueDate={props.dueDate}
+          />
+          <Spacer width={10} />
+          {props.onPressDelete ? (
+            <TodoInputDeleteButton onPress={props.onPressDelete} />
+          ) : null}
+        </View>
+        {props.isLoading ? (
+          <ActivityIndicator style={styles.spinner} color={Colors.spinner} />
+        ) : null}
+        <TodoSaveButton style={styles.saveButton} onPress={props.onPressSave} />
       </View>
     );
   };
@@ -75,6 +86,15 @@ const styles = StyleSheet.create({
     bottom: 0,
     end: 25,
   },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  spinner: {
+    position: 'absolute',
+    bottom: 5,
+    end: 85,
+  },
 });
 
-export default NewTodoInput;
+export default TodoInput;

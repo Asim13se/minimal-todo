@@ -13,6 +13,8 @@ const Colors = {
   checkbox: primary,
   borderColor: '#b5b5b5',
   error: '#db2323',
+  delete: '#db2323',
+  spinner: primary,
 };
 
 export default Colors;

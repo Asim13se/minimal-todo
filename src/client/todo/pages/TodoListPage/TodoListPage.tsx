@@ -4,7 +4,8 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {MainStackParamList} from '../../../common/navigation/types/MainStackParamList';
 import NewTodoFloatingButton from '../../components/NewTodoFloatingButton';
 import TodoListContainer from './components/TodoListContainer';
-import NewTodoInputContainer from '../../components/NewTodoInput/NewTodoInputContainer';
+import NewTodoInputContainer from '../../components/NewTodoInputContainer';
+import EditTodoInputContainer from '../../components/EditTodoInputContainer';
 
 export type TodoListPageProps = {} & NativeStackScreenProps<
   MainStackParamList,
@@ -15,6 +16,7 @@ function TodoListPage(props: TodoListPageProps) {
   return (
     <View style={styles.root}>
       <TodoListContainer navigation={props.navigation} />
+      <EditTodoInputContainer />
       <NewTodoInputContainer />
       <NewTodoFloatingButton />
     </View>

@@ -22,7 +22,9 @@ const graphQLSchema = gql`
   type Mutation {
     signUpAnonymousUser(id: String!): User
     addTodo(id: String!, title: String!, dueDate: String): Todo
+    updateTodo(id: String!, title: String, dueDate: String): Todo
     toggleTodoCompletion(id: String!, doneAt: String!): Boolean
+    deleteTodo(id: String!): Boolean
   }
 `;
 
