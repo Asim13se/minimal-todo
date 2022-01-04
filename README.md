@@ -3,7 +3,7 @@ Minimal Todo is a simple todo app with a minimal set of features
 - Written in Typescript
 - [apollo client](https://www.apollographql.com/docs/react/) is used as GraphQL client
 - [apollo-server](https://www.apollographql.com/docs/apollo-server/) is used as GraphQL server
-- [level](https://github.com/Level/level) is used for data persistent on the backend
+- [level](https://github.com/Level/level) is used for data persistence on the backend
 - [react-hooks-global-state](https://github.com/dai-shi/react-hooks-global-state) for global state management
 - [react-navigation](https://reactnavigation.org/) for navigation
 - [react-i18next](https://react.i18next.com/) for internationalization i18n
